@@ -18,19 +18,13 @@ namespace LogoManager.Service
         TcpListener listener = null;
         TcpClient client = new TcpClient();
         readonly ILogMessageService _LogMessageService;
-        public DateTime LastMessageTime { get; protected set; } = DateTime.MinValue;
-
-        public event EventHandler SendEventHandler;
 
         public TCPService(ILogMessageService logMessageService)
         {
             _LogMessageService = logMessageService;
         }
 
-        public void invoke()
-        {
-            SendEventHandler?.Invoke(this, EventArgs.Empty);
-        }
+       
 
         public  async Task Start(int port, string ipAddress)
         {
